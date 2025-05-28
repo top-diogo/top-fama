@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Anuncie Conosco | Mui-Loco</title>
+    <style>
+        .advertise-hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .advertise-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .advertise-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        @media (min-width: 992px) {
+            .advertise-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        .benefits, .plans {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-icon {
+            color: var(--accent);
+            font-size: 24px;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .plan-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .plan-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .plan-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .plan-features {
+            margin-bottom: 20px;
+        }
+        
+        .plan-features li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .plan-features li:before {
+            content: "✓";
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+        
+        .plan-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        .plan-btn:hover {
+            background-color: #cc0070;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header padrão -->
+    
+    <section class="advertise-hero">
+        <div class="container">
+            <h1>Anuncie no Mui-Loco</h1>
+            <p>Alcance milhares de apaixonados por música todos os dias</p>
+        </div>
+    </section>
+    
+    <div class="container">
+        <div class="advertise-content">
+            <div class="benefits">
+                <h2>Por que anunciar conosco?</h2>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div>
+                        <h3>Público Qualificado</h3>
+                        <p>Atingimos mais de 500 mil fãs de música por mês, com alto engajamento.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div>
+                        <h3>Destaque para Sua Marca</h3>
+                        <p>Posicionamento estratégico em um dos maiores portais de música do país.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div>
+                        <h3>Formatos Diversos</h3>
+                        <p>Banners, posts patrocinados, newsletters e muito mais.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">✓</div>
+                    <div>
+                        <h3>Relatórios Detalhados</h3>
+                        <p>Acesso a dados de desempenho e métricas de campanha.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="plans">
+                <h2>Nossos Planos</h2>
+                
+                <div class="plan-card">
+                    <h3>Mensal</h3>
+                    <div class="plan-price">2500Kz/1 mês</div>
+                    <ul class="plan-features">
+                        <li>1 música bo blog sem anúncios</li>
+                        
+                </div>
+                
+                
+                <div class="plan-card">
+                    <h3>anual</h3>
+                    <div class="plan-price">10.000Kz/1ano</div>
+                    <ul class="plan-features">
+                        <li>divulgação da música durante 1 mês</li>
+                    <a href="#contact" class="plan-btn">Fale com nosso time no nosso WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

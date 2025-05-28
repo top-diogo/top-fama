@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TOP-FAMA | Blog de Música</title>
+    <style>
+  /* Variáveis CSS Atualizadas */
+:root {
+  --primary: #ff0080;        /* Rosa choque */
+  --secondary: #00e6e6;      /* Ciano neon */
+  --accent: #ffe600;         /* Amarelo vibrante */
+  --dark: #0b0c10;           /* Preto profundo */
+  --light: #ffffff;          /* Branco puro */
+  --gray: #999999;           /* Cinza claro */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Header */
+header {
+  background-color: var(--dark);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(255, 0, 128, 0.3);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo span {
+  color: var(--primary);
+}
+
+/* Navigation */
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: color 0.3s;
+  padding: 5px 0;
+  position: relative;
+}
+
+nav ul li a:hover {
+  color: var(--secondary);
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--secondary);
+  transition: width 0.3s;
+}
+
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--light);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--dark);
+  padding: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+}
+
+.mobile-menu.active {
+  display: block;
+}
+
+.mobile-menu ul {
+  list-style: none;
+}
+
+.mobile-menu ul li {
+  margin-bottom: 10px;
+}
+
+.mobile-menu ul li a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Buttons */
+.btn {
+  background-color: var(--primary);
+  color: var(--light);
+  padding: 8px 12px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: #cc0070;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(255, 0, 128, 0.3);
+}
+
+/* Hero Section */
+.hero {
+  padding: 40px 0;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: var(--light);
+  margin-bottom: 30px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 15px;
+  padding-bottom: 15px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 90%;
+  scroll-snap-align: start;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+}
+
+.carousel-item:hover {
+  transform: scale(1.02);
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 15px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+
+.carousel-content h2 {
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--light);
+}
+
+.carousel-content p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.carousel-dot.active {
+  background-color: var(--accent);
+  transform: scale(1.2);
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px 0;
+}
+
+.section-title {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: var(--primary);
+  border-bottom: 3px solid var(--secondary);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.posts {
+  width: 100%;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.post-card {
+  background: var(--light);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(255, 0, 128, 0.1);
+  transition: all 0.3s;
+  position: relative;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(255, 0, 128, 0.2);
+}
+
+.post-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.post-card:hover img {
+  transform: scale(1.05);
+}
+
+.post-content {
+  padding: 15px;
+}
+
+.post-category {
+  display: inline-block;
+  background-color: var(--secondary);
+  color: var(--dark);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.post-title {
+  font-size: 16px;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.post-excerpt {
+  font-size: 13px;
+  color: var(--gray);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--gray);
+}
+
+/* Sidebar */
+.sidebar {
+  width: 100%;
+}
+
+.sidebar-widget {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.sidebar-widget:hover {
+  transform: translateY(-3px);
+}
+
+.widget-title {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: var(--secondary);
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.widget-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+.popular-posts {
+  list-style: none;
+}
+
+.popular-posts li {
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.popular-posts li:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 35px;
+  height: 35px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.social-icon:hover {
+  background-color: var(--accent);
+  transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark);
+  color: var(--light);
+  padding: 30px 0 15px;
+  margin-top: 30px;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.footer-widget h3 {
+  margin-bottom: 15px;
+  color: var(--accent);
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.footer-widget h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary);
+}
+
+.footer-widget ul {
+  list-style: none;
+}
+
+.footer-widget ul li {
+  margin-bottom: 8px;
+}
+
+.footer-widget ul li a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+.footer-widget ul li a:hover {
+  color: var(--accent);
+  transform: translateX(5px);
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Admin Panel */
+.login-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-modal.active {
+  display: flex;
+}
+
+.login-form {
+  background-color: var(--light);
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: var(--primary);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.admin-panel {
+  display: none;
+  padding: 20px 0;
+}
+
+.admin-panel.active {
+  display: block;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.admin-tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.admin-tab.active {
+  border-bottom-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.admin-content {
+  display: none;
+}
+
+.admin-content.active {
+  display: block;
+}
+
+.admin-section {
+  margin-bottom: 30px;
+}
+
+.admin-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.admin-form textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.file-upload {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.file-upload-btn {
+  padding: 8px 12px;
+  background-color: var(--secondary);
+  color: var(--dark);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.file-upload input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-upload-name {
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--gray);
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 200px;
+  margin-top: 10px;
+  display: none;
+  border-radius: 4px;
+}
+
+.admin-items-list {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.admin-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-item:last-child {
+  border-bottom: none;
+}
+
+.admin-item-actions button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+
+/* Responsividade */
+@media (max-width: 767px) {
+  .header-container {
+    flex-wrap: wrap;
+  }
+  
+  nav {
+    display: none;
+  }
+  
+  .mobile-menu-btn {
+    display: block;
+  }
+  
+  .carousel-item {
+    width: 85%;
+  }
+  
+  .carousel-content h2 {
+    font-size: 18px;
+  }
+  
+  .section-title {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  .posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .main-content {
+    flex-direction: row;
+  }
+
+  .posts {
+    flex: 2;
+  }
+
+  .sidebar {
+    flex: 1;
+    padding-left: 20px;
+  }
+
+  .footer-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .carousel-item {
+    width: 80%;
+  }
+  
+  .carousel-content h2 {
+    font-size: 22px;
+  }
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header>
+<div class="container header-container">
+  <a href="#" class="logo" id="siteLogo">TOP<span>-FAMA</span></a>
+
+  <button class="mobile-menu-btn" id="mobileMenuBtn">≡</button>
+
+  <nav>
+      <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="news.html">News</a></li>
+          <li><a href="post">Music</a></li>
+      </ul>
+  </nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="post.html">Music</a></li>
+  </ul>
+</div>
+</header>
+
+<!-- Login Modal -->
+<div class="login-modal" id="loginModal">
+    <div class="login-form">
+        <h2>Login Administrativo</h2>
+        <form id="adminLoginForm">
+            <div class="form-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="login-buttons">
+                <button type="button" class="btn close-login" id="closeLogin">Cancelar</button>
+                <button type="submit" class="btn">Entrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Admin Dashboard -->
+<div class="admin-panel" id="adminPanel">
+    <div class="container">
+        <div class="admin-header">
+            <h2>Painel Administrativo | Mui-Loco</h2>
+            <div>
+                <button class="btn back-to-site" id="backToSite">Voltar ao Site</button>
+                <button class="btn logout-btn" id="logoutBtn">Sair</button>
+            </div>
+        </div>
+        
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+            <div class="admin-tab active" data-tab="carousel-content">Carousel</div>
+            <div class="admin-tab" data-tab="posts-content">Posts</div>
+            <div class="admin-tab" data-tab="news-content">Notícias</div>
+        </div>
+        
+        <div class="admin-content active" id="carousel-content">
+            <div class="admin-sections">
+                <!-- Carousel Management -->
+                <div class="admin-section">
+                    <h3>Gerenciar Hero Carousel</h3>
+                    <form id="carouselForm" class="admin-form">
+                        <div class="form-group">
+                            <label for="carouselTitle">Título</label>
+                            <input type="text" id="carouselTitle" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="carouselDescription">Descrição</label>
+                            <textarea id="carouselDescription" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="carouselImageFile">Imagem</label>
+                            <div class="file-upload">
+                                <button type="button" class="file-upload-btn">Escolher arquivo...</button>
+                                <input type="file" id="carouselImageFile" name="image" accept="image/*" required>
+                                <div class="file-upload-name" id="carouselImageFileName">Nenhum arquivo selecionado</div>
+                            </div>
+                            <img id="carouselPreviewImage" class="preview-image">
+                        </div>
+                        <button type="submit" class="btn" id="addCarouselItem">Adicionar ao Carousel</button>
+                    </form>
+                    
+                    <div class="admin-items-list" id="carouselItemsList">
+                        <h4>Itens do Carousel</h4>
+                        <!-- JS will populate carousel items here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="admin-content" id="posts-content">
+            <div class="admin-sections">
+                <!-- Posts Management -->
+                <div class="admin-section">
+                    <h3>Gerenciar Posts</h3>
+                    <form id="postForm" class="admin-form">
+                        <div class="form-group">
+                            <label for="postTitle">Título</label>
+                            <input type="text" id="postTitle" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postExcerpt">Resumo</label>
+                            <textarea id="postExcerpt" name="excerpt" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="postCategory">Categoria</label>
+                            <select id="postCategory" name="category" required>
+                                <option value="Resenhas">Resenhas</option>
+                                <option value="Tutoriais">Tutoriais</option>
+                                <option value="Entrevistas">Entrevistas</option>
+                                <option value="Playlists">Playlists</option>
+                                <option value="Descobertas">Descobertas</option>
+                                <option value="Opinião">Opinião</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="postAuthor">Autor</label>
+                            <input type="text" id="postAuthor" name="author" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="postImageFile">Imagem</label>
+                            <div class="file-upload">
+                                <button type="button" class="file-upload-btn">Escolher arquivo...</button>
+                                <input type="file" id="postImageFile" name="image" accept="image/*" required>
+                                <div class="file-upload-name" id="postImageFileName">Nenhum arquivo selecionado</div>
+                            </div>
+                            <img id="postPreviewImage" class="preview-image">
+                        </div>
+                        <div class="form-group">
+                            <label for="postSection">Seção</label>
+                            <select id="postSection" name="section" required>
+                                <option value="recent">Posts Recentes</option>
+                                <option value="trending">Trending</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn" id="addPostItem">Adicionar Post</button>
+                    </form>
+                    
+                    <div class="admin-items-list" id="postsItemsList">
+                        <h4>Posts</h4>
+                        <!-- JS will populate posts here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Conteúdo da aba Notícias -->
+        <div class="admin-content" id="news-content">
+            <div class="admin-sections">
+                <!-- News Management -->
+                <div class="admin-section">
+                    <h3>Gerenciar Notícias</h3>
+                    <form id="newsForm" class="admin-form">
+                        <div class="form-group">
+                            <label for="newsTitle">Título da Notícia</label>
+                            <input type="text" id="newsTitle" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsExcerpt">Resumo da Notícia</label>
+                            <textarea id="newsExcerpt" name="excerpt" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsCategory">Categoria</label>
+                            <select id="newsCategory" name="category" required>
+                                <option value="Lançamentos">Lançamentos</option>
+                                <option value="Eventos">Eventos</option>
+                                <option value="Artistas">Artistas</option>
+                                <option value="Indústria">Indústria</option>
+                                <option value="Tecnologia">Tecnologia</option>
+                                <option value="Internacional">Internacional</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsContent">Conteúdo Completo</label>
+                            <textarea id="newsContent" name="content" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsAuthor">Autor</label>
+                            <input type="text" id="newsAuthor" name="author" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsImage">Imagem</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" id="newsImage" name="image" accept="image/*">
+                                <label for="newsImage" class="file-input-label">Escolher arquivo...</label>
+                            </div>
+                            <img id="newsPreviewImage" class="preview-image">
+                        </div>
+                        <div class="form-group">
+                            <label for="newsHighlight">Notícia em Destaque?</label>
+                            <select id="newsHighlight" name="highlight">
+                                <option value="false">Não</option>
+                                <option value="true">Sim</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn" id="addNewsItem">Adicionar Notícia</button>
+                    </form>
+                    
+                    <div class="admin-items-list" id="newsItemsList">
+                        <h4>Notícias Publicadas</h4>
+                        <!-- JS will populate news items here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hero Section with Carousel -->
+<section class="hero" id="heroSection">
+<div class="container">
+  <div class="carousel" id="carousel">
+      <div class="carousel-item" data-id="carousel-1">
+          <img src="imagem/Viagem.jpg" alt="Destaque 1">
+          <div class="carousel-content">
+              <h2>Lançamentos da Semana: 5 Álbuns Imperdíveis</h2>
+              <p>Confira nossa seleção dos melhores lançamentos musicais dessa semana.</p>
+          </div>
+      </div>
+      <div class="carousel-item" data-id="carousel-2">
+          <img src="imagem/gato.jpg" alt="Destaque 2">
+          <div class="carousel-content">
+              <h2>Entrevista Exclusiva: O Futuro do Rock Independente</h2>
+              <p>Conversamos com produtores e artistas sobre as tendências para o próximo ano.</p>
+          </div>
+      </div>
+      <div class="carousel-item" data-id="carousel-3">
+          <img src="https://via.placeholder.com/800x400" alt="Destaque 3">
+          <div class="carousel-content">
+              <h2>Guia Completo: Como Montar seu Home Studio</h2>
+              <p>Do básico ao avançado: tudo o que você precisa para começar a produzir música em casa.</p>
+          </div>
+      </div>
+  </div>
+  <div class="carousel-dots" id="carouselDots"></div>
+</div>
+</section>
+
+<!-- Main Content -->
+<div class="container" id="mainContainer">
+<main class="main-content">
+  <section class="posts">
+      <h2 class="section-title">Posts Recentes</h2>
+      <div class="posts-grid" id="recentPosts">
+          <article class="post-card" data-id="post-1">
+              <img src="https://via.placeholder.com/300x200" alt="Post 1">
+              <div class="post-content">
+                  <span class="post-category">Resenhas</span>
+                  <h3 class="post-title">Análise: O Novo Álbum que Está Revolucionando o Hip-Hop</h3>
+                  <p class="post-excerpt">Um mergulho profundo nas faixas e na proposta inovadora deste lançamento que está dando o que falar.</p>
+                  <div class="post-meta">
+                      <span>Por: Eduardo Santos</span>
+                      <span>18 Jun 2023</span>
+                  </div>
+              </div>
+          </article>
+
+          <article class="post-card" data-id="post-2">
+              <img src="https://via.placeholder.com/300x200" alt="Post 2">
+              <div class="post-content">
+                  <span class="post-category">Tutoriais</span>
+                  <h3 class="post-title">5 Plugins Essenciais para Produção de Música Eletrônica</h3>
+                  <p class="post-excerpt">Descubra as ferramentas indispensáveis para quem quer levar suas produções ao próximo nível.</p>
+                  <div class="post-meta">
+                      <span>Por: Mariana Lima</span>
+                      <span>16 Jun 2023</span>
+                  </div>
+              </div>
+          </article>
+
+          <article class="post-card" data-id="post-3">
+              <img src="https://via.placeholder.com/300x200" alt="Post 3">
+              <div class="post-content">
+                  <span class="post-category">Entrevistas</span>
+                  <h3 class="post-title">Nos Bastidores com o Produtor por Trás dos Maiores Hits</h3>
+                  <p class="post-excerpt">Uma conversa exclusiva sobre processos criativos, desafios da indústria e projetos futuros.</p>
+                  <div class="post-meta">
+                      <span>Por: Rafael Torres</span>
+                      <span>15 Jun 2023</span>
+                  </div>
+              </div>
+          </article>
+
+          <article class="post-card" data-id="post-4">
+              <img src="https://via.placeholder.com/300x200" alt="Post 4">
+              <div class="post-content">
+                  <span class="post-category">Playlists</span>
+                  <h3 class="post-title">Playlist do Mês: Sons para Dias Chuvosos</h3>
+                  <p class="post-excerpt">15 faixas cuidadosamente selecionadas para criar a atmosfera perfeita para dias de introspecção.</p>
+                  <div class="post-meta">
+                      <span>Por: Julia Mendes</span>
+                      <span>12 Jun 2023</span>
+                  </div>
+              </div>
+          </article>
+      </div>
+
+      <h2 class="section-title">Trending</h2>
+      <div class="posts-grid" id="trendingPosts">
+          <article class="post-card" data-id="post-5">
+              <img src="https://via.placeholder.com/300x200" alt="Trending 1">
+              <div class="post-content">
+                  <span class="post-category">Descobertas</span>
+                  <h3 class="post-title">3 Artistas Independentes que Você Precisa Conhecer</h3>
+                  <p class="post-excerpt">Talentos emergentes que estão redefinindo gêneros e conquistando público de nicho.</p>
+                  <div class="post-meta">
+                      <span>Por: Leonardo Alves</span>
+                      <span>10 Jun 2023</span>
+                  </div>
+              </div>
+          </article>
+
+          <article class="post-card" data-id="post-6">
+              <img src="https://via.placeholder.com/300x200" alt="Trending 2">
+              <div class="post-content">
+                  <span class="post-category">Opinião</span>
+                  <h3 class="post-title">Por Que o Vinil Continua Conquistando Novas Gerações?</h3>
+                  <p class="post-excerpt">Uma análise sobre o resurgimento do formato físico em plena era do streaming.</p>
+                  <div class="post-meta">
+                      <span>Por: Carolina Souza</span>
+                      <span>8 Jun 2023</span>
+                  </div>
+              </div>
+          </article>
+      </div>
+  </section>
+
+  <aside class="sidebar">
+      <div class="sidebar-widget">
+          <h3 class="widget-title">Sobre o Top-Fama</h3>
+          <p style="font-size: 14px;">Somos um blog dedicado à música em todas as suas formas. Aqui você encontra resenhas, notícias, dicas e muito mais sobre o universo musical.</p>
+      </div>
+
+    
+
+      <div class="sidebar-widget">
+          <h3 class="widget-title">Siga-nos</h3>
+          <div class="social-icons">
+              <a href="#" class="social-icon">FB</a>
+              <a href="#" class="social-icon">WT</a>
+              <a href="#" class="social-icon">TT</a>
+              <a href="#" class="social-icon">YT</a>
+          </div>
+      </div>
+  </aside>
+</main>
+</div>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+  <div class="footer-container">
+      <div class="footer-widget">
+          <h3>Sobre Nós</h3>
+          <p style="font-size: 14px; margin-bottom: 15px;">O blog Top-Fama é um blog dedicado a trazer as melhores notícias, resenhas e conteúdos sobre o mundo da música.</p>
+      </div>
+      <div class="footer-widget">
+          <h3>Links Úteis</h3>
+          <ul>
+              <li><a href="p-p.html">Política de Privacidade</a></li>
+              <li><a href="termos.html">Termos de Uso</a></li>
+              <li><a href="cont.html">Contato</a></li>
+              <li><a href="anun.html">Anuncie Conosco</a></li>
+          </ul>
+      </div>
+  </div>
+  <div class="copyright">
+      <p>&copy; 2025 Top-Fama. Todos os direitos reservados.</p>
+  </div>
+</div>
+</footer>
+
+<script>
+        // Elementos DOM Principais
+const siteLogo = document.getElementById('siteLogo');
+const loginModal = document.getElementById('loginModal');
+const closeLogin = document.getElementById('closeLogin');
+const adminLoginForm = document.getElementById('adminLoginForm');
+const adminPanel = document.getElementById('adminPanel');
+const backToSite = document.getElementById('backToSite');
+const logoutBtn = document.getElementById('logoutBtn');
+const heroSection = document.getElementById('heroSection');
+const mainContainer = document.getElementById('mainContainer');
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+
+// Formulários Admin
+const carouselForm = document.getElementById('carouselForm');
+const postForm = document.getElementById('postForm');
+const newsForm = document.getElementById('newsForm');
+const carouselItemsList = document.getElementById('carouselItemsList');
+const postsItemsList = document.getElementById('postsItemsList');
+const newsItemsList = document.getElementById('newsItemsList');
+const carousel = document.getElementById('carousel');
+const recentPosts = document.getElementById('recentPosts');
+const trendingPosts = document.getElementById('trendingPosts');
+const carouselDots = document.getElementById('carouselDots');
+
+// File upload elements
+const carouselImageFile = document.getElementById('carouselImageFile');
+const carouselImageFileName = document.getElementById('carouselImageFileName');
+const carouselPreviewImage = document.getElementById('carouselPreviewImage');
+const postImageFile = document.getElementById('postImageFile');
+const postImageFileName = document.getElementById('postImageFileName');
+const postPreviewImage = document.getElementById('postPreviewImage');
+const newsImage = document.getElementById('newsImage');
+const newsPreviewImage = document.getElementById('newsPreviewImage');
+
+// Admin tabs
+const adminTabs = document.querySelectorAll('.admin-tab');
+const adminContents = document.querySelectorAll('.admin-content');
+
+// Dados do site
+let carouselItems = [
+    {
+        id: 'carousel-1',
+        title: 'Lançamentos da Semana: Nova música do cantor Skiber',
+        description: 'Hoje dia 5 de Março o cantor Skiber fez o lançamento da sua música nova intitulada Viagem .',
+        image: 'Viagem.jpg'
+    },
+    {
+        id: 'carousel-2',
+        title: 'Produtora mainstreet: superando sempre as nossas expectativas',
+        description: 'Não parando de nós suprender com musicas que dominam o mercado.',
+        image: 'M.jpg'
+    },
+    {
+        id: 'carousel-3',
+        title: 'Guia Completo: Sobre factos que não sabias sobre a 30PRAUM',
+        description: 'Estais a espera do que vai ja na área de notícias para não perderes nenhum conteúdo sobre a 30PRAUM.',
+        image: '30.jpg'
+    }
+];
+
+let posts = [
+    {
+        id: 'post-1',
+        title: 'Refreacando a mente ',
+        excerpt: 'Orochi e um dos maiores nomes do rap brasileiro fundador mainstreet .',
+        category: 'Resenhas',
+        author: 'Eduardo Santos',
+        date: '17 Mai 2025',
+        image: '1.jpeg',
+        section: 'recent'
+    },
+    {
+        id: 'post-2',
+        title: 'Top musica para escutar com o teu amor ',
+        excerpt: 'Melhor escolha de  música do cantor Verly com o título Vinho Rose deixara um clima mas agradável.',
+        category: 'Tutoriais',
+        author: 'Mariana Lima',
+        date: '16 Jun 2023',
+        image: 'ver.jpeg',
+        section: 'recent'
+    },
+    {
+        id: 'post-3',
+        title: 'Top 3 cantor Angola mais amado',
+        excerpt: 'O cantor Gerilson Insrael, e considerando o cantor mais amados pelas fã por suas músicas cantagiantes.',
+        category: 'Entrevistas',
+        author: 'Rafael Torres',
+        date: '15 Jun 2023',
+        image: 'G.jpg',
+        section: 'recent'
+    },
+    {
+        id: 'post-4',
+        title: 'Mundo Geek',
+        excerpt: 'Lucas A.R.T um dos maiores nomes do rap geek abrangendo o mundo inteiro, tera parado por motivos pessoas mais ja esta de volta com o teu canal no YouTube 7minutoz.',
+        category: 'Playlists',
+        author: 'Julia Mendes',
+        date: '12 Jun 2023',
+        image: '4.jpg',
+        section: 'recent'
+    },
+    {
+        id: 'post-5',
+        title: 'Mhrap ',
+        excerpt: 'Se falamos do Lucas A R.T não tinhamos como não fala do brabo Mhrap e uma das maiores escolhas para escolar uma boa vibe de rap geek',
+        category: 'Descobertas',
+        author: 'Leonardo Alves',
+        date: '10 Jun 2023',
+        image: '3.jpg',
+        section: 'trending'
+    },
+    {
+        id: 'post-6',
+        title: 'Anderson Mario',
+        excerpt: 'Anderson Mario o cantor que e conhecido pelo seu estilo único e estravagante, sua carreira musical e marcada por inúmeros sucesso.',
+        category: 'Opinião',
+        author: 'Carolina Souza',
+        date: '8 Jun 2023',
+        image: '2.jpg',
+        section: 'trending'
+    }
+];
+
+// Dados das notícias
+let newsItems = [];
+
+// Carregar dados salvos do localStorage (se existirem)
+function loadSavedData() {
+    const savedNews = localStorage.getItem('muiLocoNews');
+    if (savedNews) {
+        try {
+            newsItems = JSON.parse(savedNews);
+        } catch (e) {
+            console.error('Erro ao carregar notícias do localStorage:', e);
+            newsItems = [];
+        }
+    }
+}
+
+// Variáveis para controle do carrossel
+let currentCarouselIndex = 0;
+let carouselInterval;
+const carouselAutoScrollDelay = 5000; // 5 segundos
+
+// Contador de cliques para o logo
+let logoClickCount = 0;
+
+// Credenciais de acesso admin (em produção, isso estaria em um servidor seguro)
+const adminCredentials = {
+    username: 'admin',
+    password: 'Top-fama2025'
+};
+
+// Função para formatar a data atual
+function getCurrentDate() {
+    const options = { day: '2-digit', month: 'short', year: 'numeric' };
+    const date = new Date();
+    return date.toLocaleDateString('pt-BR', options);
+}
+
+// Função para criar os dots de navegação do carrossel
+function createCarouselDots() {
+    carouselDots.innerHTML = '';
+    
+    carouselItems.forEach((item, index) => {
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot';
+        if (index === currentCarouselIndex) {
+            dot.classList.add('active');
+        }
+        dot.dataset.index = index;
+        dot.addEventListener('click', () => {
+            goToCarouselItem(index);
+        });
+        carouselDots.appendChild(dot);
+    });
+}
+
+// Função para navegar para um item específico do carrossel
+function goToCarouselItem(index) {
+    if (index >= 0 && index < carouselItems.length) {
+        currentCarouselIndex = index;
+        const itemWidth = carousel.querySelector('.carousel-item').offsetWidth;
+        carousel.scrollTo({
+            left: index * (itemWidth + 15), // 15px é o gap entre os itens
+            behavior: 'smooth'
+        });
+        updateCarouselDots();
+        resetCarouselInterval();
+    }
+}
+
+// Função para atualizar os dots ativos
+function updateCarouselDots() {
+    const dots = carouselDots.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+        if (index === currentCarouselIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+}
+
+// Função para avançar para o próximo item do carrossel
+function nextCarouselItem() {
+    currentCarouselIndex = (currentCarouselIndex + 1) % carouselItems.length;
+    goToCarouselItem(currentCarouselIndex);
+}
+
+// Função para iniciar o carrossel automático
+function startCarouselAutoScroll() {
+    carouselInterval = setInterval(nextCarouselItem, carouselAutoScrollDelay);
+}
+
+// Função para reiniciar o intervalo do carrossel
+function resetCarouselInterval() {
+    clearInterval(carouselInterval);
+    startCarouselAutoScroll();
+}
+
+// Evento de clique no logo para abrir o login após 7 cliques
+siteLogo.addEventListener('click', function(e) {
+    e.preventDefault();
+    logoClickCount++;
+    
+    if (logoClickCount >= 7) {
+        loginModal.classList.add('active');
+        logoClickCount = 0; // Reset contador
+    }
+});
+
+// Fechar modal de login
+closeLogin.addEventListener('click', function() {
+    loginModal.classList.remove('active');
+});
+
+// Verificar credenciais de login
+adminLoginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    if (username === adminCredentials.username && password === adminCredentials.password) {
+        // Login bem sucedido
+        loginModal.classList.remove('active');
+        adminPanel.classList.add('active');
+        heroSection.style.display = 'none';
+        mainContainer.style.display = 'none';
+        
+        // Carrega dados existentes no painel admin
+        renderCarouselItems();
+        renderPostItems();
+        renderNewsAdminList();
+    } else {
+        alert('Credenciais inválidas. Tente novamente.');
+    }
+});
+
+// Voltar para o site
+backToSite.addEventListener('click', function() {
+    adminPanel.classList.remove('active');
+    heroSection.style.display = 'block';
+    mainContainer.style.display = 'block';
+});
+
+// Logout
+logoutBtn.addEventListener('click', function() {
+    adminPanel.classList.remove('active');
+    heroSection.style.display = 'block';
+    mainContainer.style.display = 'block';
+});
+
+// Preview de imagem do carrossel
+carouselImageFile.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        carouselImageFileName.textContent = file.name;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            carouselPreviewImage.src = e.target.result;
+            carouselPreviewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    } else {
+        carouselImageFileName.textContent = 'Nenhum arquivo selecionado';
+        carouselPreviewImage.style.display = 'none';
+    }
+});
+
+// Preview de imagem do post
+postImageFile.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        postImageFileName.textContent = file.name;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            postPreviewImage.src = e.target.result;
+            postPreviewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    } else {
+        postImageFileName.textContent = 'Nenhum arquivo selecionado';
+        postPreviewImage.style.display = 'none';
+    }
+});
+
+// Preview de imagem da notícia
+newsImage.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            newsPreviewImage.src = event.target.result;
+            newsPreviewImage.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+    } else {
+        newsPreviewImage.style.display = 'none';
+    }
+});
+
+// Adicionar item ao carrossel
+carouselForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const carouselImageFile = document.getElementById('carouselImageFile');
+    const file = carouselImageFile.files[0];
+    
+    if (!file) {
+        alert('Por favor, selecione uma imagem para o carrossel.');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const newCarouselItem = {
+            id: 'carousel-' + (carouselItems.length + 1),
+            title: document.getElementById('carouselTitle').value,
+            description: document.getElementById('carouselDescription').value,
+            image: e.target.result
+        };
+        
+        carouselItems.push(newCarouselItem);
+        
+        // Renderiza no painel admin
+        renderCarouselItems();
+        
+        // Atualiza o carrossel no site
+        updateCarousel();
+        
+        // Limpa o formulário
+        carouselForm.reset();
+        carouselImageFileName.textContent = 'Nenhum arquivo selecionado';
+        carouselPreviewImage.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+});
+
+// Adicionar post
+postForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const postImageFile = document.getElementById('postImageFile');
+    const file = postImageFile.files[0];
+    
+    if (!file) {
+        alert('Por favor, selecione uma imagem para o post.');
+        return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const newPost = {
+            id: 'post-' + (posts.length + 1),
+            title: document.getElementById('postTitle').value,
+            excerpt: document.getElementById('postExcerpt').value,
+            category: document.getElementById('postCategory').value,
+            author: document.getElementById('postAuthor').value,
+            date: getCurrentDate(),
+            image: e.target.result,
+            section: document.getElementById('postSection').value
+        };
+        
+        posts.push(newPost);
+        
+        // Renderiza no painel admin
+        renderPostItems();
+        
+        // Atualiza os posts no site
+        updatePosts();
+        
+        // Limpa o formulário
+        postForm.reset();
+        postImageFileName.textContent = 'Nenhum arquivo selecionado';
+        postPreviewImage.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+});
+
+// Renderizar itens do carrossel no painel admin
+function renderCarouselItems() {
+    carouselItemsList.innerHTML = '<h4>Itens do Carousel</h4>';
+    
+    carouselItems.forEach(item => {
+        const adminItem = document.createElement('div');
+        adminItem.className = 'admin-item';
+        adminItem.dataset.id = item.id;
+        
+        adminItem.innerHTML = `
+            <div class="admin-item-title">${item.title}</div>
+            <div class="admin-item-actions">
+                <button class="admin-item-edit">Editar</button>
+                <button class="admin-item-delete" data-id="${item.id}" data-type="carousel">Remover</button>
+            </div>
+        `;
+        
+        carouselItemsList.appendChild(adminItem);
+    });
+    
+    // Adicionar listeners para os botões de remover
+    document.querySelectorAll('.admin-item-delete[data-type="carousel"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const idToRemove = this.dataset.id;
+            carouselItems = carouselItems.filter(item => item.id !== idToRemove);
+            renderCarouselItems();
+            updateCarousel();
+        });
+    });
+}
+
+// Renderizar posts no painel admin
+function renderPostItems() {
+    postsItemsList.innerHTML = '<h4>Posts</h4>';
+    
+    posts.forEach(post => {
+        const adminItem = document.createElement('div');
+        adminItem.className = 'admin-item';
+        adminItem.dataset.id = post.id;
+        
+        adminItem.innerHTML = `
+            <div class="admin-item-title">${post.title} (${post.section === 'recent' ? 'Recentes' : 'Trending'})</div>
+            <div class="admin-item-actions">
+                <button class="admin-item-edit">Editar</button>
+                <button class="admin-item-delete" data-id="${post.id}" data-type="post">Remover</button>
+            </div>
+        `;
+        
+        postsItemsList.appendChild(adminItem);
+    });
+    
+    // Adicionar listeners para os botões de remover
+    document.querySelectorAll('.admin-item-delete[data-type="post"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const idToRemove = this.dataset.id;
+            posts = posts.filter(post => post.id !== idToRemove);
+            renderPostItems();
+            updatePosts();
+        });
+    });
+}
+
+// Atualizar o carrossel no site
+function updateCarousel() {
+    carousel.innerHTML = '';
+    
+    carouselItems.forEach(item => {
+        const carouselItem = document.createElement('div');
+        carouselItem.className = 'carousel-item';
+        carouselItem.dataset.id = item.id;
+        
+        carouselItem.innerHTML = `
+            <img src="${item.image}" alt="${item.title}">
+            <div class="carousel-content">
+                <h2>${item.title}</h2>
+                <p>${item.description}</p>
+            </div>
+        `;
+        
+        carousel.appendChild(carouselItem);
+    });
+    
+    // Atualiza os dots de navegação
+    createCarouselDots();
+    
+    // Inicia o carrossel automático
+    startCarouselAutoScroll();
+}
+
+// Atualizar os posts no site
+function updatePosts() {
+    // Limpar posts existentes
+    recentPosts.innerHTML = '';
+    trendingPosts.innerHTML = '';
+    
+    // Adicionar posts recentes
+    posts.filter(post => post.section === 'recent').forEach(post => {
+        const postCard = document.createElement('article');
+        postCard.className = 'post-card';
+        postCard.dataset.id = post.id;
+        
+        postCard.innerHTML = `
+            <img src="${post.image}" alt="${post.title}">
+            <div class="post-content">
+                <span class="post-category">${post.category}</span>
+                <h3 class="post-title">${post.title}</h3>
+                <p class="post-excerpt">${post.excerpt}</p>
+                <div class="post-meta">
+                    <span>Por: ${post.author}</span>
+                    <span>${post.date}</span>
+                </div>
+            </div>
+        `;
+        
+        recentPosts.appendChild(postCard);
+    });
+    
+    // Adicionar posts trending
+    posts.filter(post => post.section === 'trending').forEach(post => {
+        const postCard = document.createElement('article');
+        postCard.className = 'post-card';
+        postCard.dataset.id = post.id;
+        
+        postCard.innerHTML = `
+            <img src="${post.image}" alt="${post.title}">
+            <div class="post-content">
+                <span class="post-category">${post.category}</span>
+                <h3 class="post-title">${post.title}</h3>
+                <p class="post-excerpt">${post.excerpt}</p>
+                <div class="post-meta">
+                    <span>Por: ${post.author}</span>
+                    <span>${post.date}</span>
+                </div>
+            </div>
+        `;
+        
+        trendingPosts.appendChild(postCard);
+    });
+}
+
+// Mobile Menu Toggle
+mobileMenuBtn.addEventListener('click', function() {
+    mobileMenu.classList.toggle('active');
+});
+
+// Pausar o carrossel quando o mouse estiver sobre ele
+carousel.addEventListener('mouseenter', function() {
+    clearInterval(carouselInterval);
+});
+
+// Retomar o carrossel quando o mouse sair
+carousel.addEventListener('mouseleave', function() {
+    startCarouselAutoScroll();
+});
+
+// Funções de utilidade
+function generateUniqueId(prefix) {
+    return prefix + '-' + new Date().getTime();
+}
+
+// Formatar data
+function formatDate(date) {
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = getMonthAbbr(date.getMonth());
+    const year = date.getFullYear();
+    
+    return `${day} ${month} ${year}`;
+}
+
+// Obter abreviação do mês em português
+function getMonthAbbr(monthIndex) {
+    const months = ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'];
+    return months[monthIndex];
+}
+
+// Renderizar lista de notícias no painel admin
+function renderNewsAdminList() {
+    newsItemsList.innerHTML = '<h4>Notícias Publicadas</h4>';
+    
+    if (newsItems.length === 0) {
+        newsItemsList.innerHTML += '<p>Nenhuma notícia publicada ainda.</p>';
+        return;
+    }
+    
+    newsItems.forEach(item => {
+        const newsAdminItem = document.createElement('div');
+        newsAdminItem.className = 'admin-item';
+        newsAdminItem.dataset.id = item.id;
+        
+        newsAdminItem.innerHTML = `
+            <div class="admin-item-title">${item.title}</div>
+            <div class="admin-item-actions">
+                <button class="admin-item-edit" data-id="${item.id}">Editar</button>
+                <button class="admin-item-delete" data-id="${item.id}" data-type="news">Excluir</button>
+            </div>
+        `;
+        
+        newsItemsList.appendChild(newsAdminItem);
+    });
+    
+    // Configurar eventos para os novos elementos
+    setupNewsAdminEvents();
+}
+
+// Configurar eventos do painel admin para notícias
+function setupNewsAdminEvents() {
+    // Botões de edição
+    document.querySelectorAll('.admin-item-edit').forEach(button => {
+        button.addEventListener('click', function() {
+            const newsId = this.getAttribute('data-id');
+            const newsItem = newsItems.find(item => item.id === newsId);
+            
+            if (newsItem) {
+                // Preencher formulário com dados da notícia
+                document.getElementById('newsTitle').value = newsItem.title;
+                document.getElementById('newsExcerpt').value = newsItem.excerpt;
+                document.getElementById('newsContent').value = newsItem.content;
+                document.getElementById('newsCategory').value = newsItem.category;
+                document.getElementById('newsAuthor').value = newsItem.author;
+                document.getElementById('newsHighlight').value = newsItem.highlight.toString();
+                
+                // Mostrar prévia da imagem
+                if (newsItem.image) {
+                    document.getElementById('newsPreviewImage').src = newsItem.image;
+                    document.getElementById('newsPreviewImage').style.display = 'block';
+                }
+                
+                // Alterar botão para atualizar e guardar ID
+                const addButton = document.getElementById('addNewsItem');
+                addButton.textContent = 'Atualizar Notícia';
+                addButton.dataset.editing = newsId;
+            }
+        });
+    });
+    
+    // Botões de exclusão
+    document.querySelectorAll('.admin-item-delete[data-type="news"]').forEach(button => {
+        button.addEventListener('click', function() {
+            const newsId = this.getAttribute('data-id');
+            
+            if (confirm('Tem certeza que deseja excluir esta notícia?')) {
+                // Remover notícia do array
+                newsItems = newsItems.filter(item => item.id !== newsId);
+                
+                // Atualizar localStorage
+                localStorage.setItem('muiLocoNews', JSON.stringify(newsItems));
+                
+                // Atualizar interface
+                renderNewsAdminList();
+                
+                alert('Notícia excluída com sucesso!');
+            }
+        });
+    });
+}
+
+// Tratar envio do formulário de notícias
+function handleNewsSubmit(e) {
+    e.preventDefault();
+    
+    const formData = {
+        title: document.getElementById('newsTitle').value,
+        excerpt: document.getElementById('newsExcerpt').value,
+        content: document.getElementById('newsContent').value,
+        category: document.getElementById('newsCategory').value,
+        author: document.getElementById('newsAuthor').value,
+        highlight: document.getElementById('newsHighlight').value === 'true',
+        date: formatDate(new Date())
+    };
+    
+    // Processar imagem
+    const imageFile = document.getElementById('newsImage').files[0];
+    const addButton = document.getElementById('addNewsItem');
+    const isEditing = addButton.dataset.editing;
+    
+    if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            formData.image = event.target.result;
+            saveNewsItem(formData, isEditing);
+        };
+        reader.readAsDataURL(imageFile);
+    } else {
+        // Se não houver novo arquivo, manter a imagem existente (no caso de edição)
+        if (isEditing) {
+            const existingItem = newsItems.find(item => item.id === isEditing);
+            if (existingItem) {
+                formData.image = existingItem.image;
+            }
+        }
+        saveNewsItem(formData, isEditing);
+    }
+}
+
+// Salvar item de notícia
+function saveNewsItem(formData, isEditing) {
+    if (isEditing) {
+        // Atualizar notícia existente
+        const index = newsItems.findIndex(item => item.id === isEditing);
+        if (index !== -1) {
+            newsItems[index] = {
+                ...newsItems[index],
+                ...formData
+            };
+            
+            // Resetar botão
+            const addButton = document.getElementById('addNewsItem');
+            addButton.textContent = 'Adicionar Notícia';
+            delete addButton.dataset.editing;
+            
+            alert('Notícia atualizada com sucesso!');
+        }
+    } else {
+        // Adicionar nova notícia
+        const newNews = {
+            id: 'news-' + (newsItems.length + 1),
+            ...formData
+        };
+        
+        newsItems.unshift(newNews); // Adicionar ao início do array
+        alert('Notícia adicionada com sucesso!');
+    }
+    
+    // Atualizar localStorage
+    localStorage.setItem('muiLocoNews', JSON.stringify(newsItems));
+    
+    // Atualizar interface
+    renderNewsAdminList();
+    
+    // Limpar formulário
+    newsForm.reset();
+    document.getElementById('newsPreviewImage').style.display = 'none';
+}
+
+// Adicionar evento de submit ao formulário de notícias
+newsForm.addEventListener('submit', handleNewsSubmit);
+
+// Switch between admin tabs
+adminTabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+        const tabId = this.getAttribute('data-tab');
+        
+        // Remove active class from all tabs and contents
+        adminTabs.forEach(t => t.classList.remove('active'));
+        adminContents.forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding content
+        this.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+    });
+});
+
+// Inicializar a página
+function initializePage() {
+    loadSavedData();
+    renderNewsAdminList();
+}
+
+// Inicializar quando o DOM estiver carregado
+document.addEventListener('DOMContentLoaded', function() {
+    // Garantir que os dados iniciais são carregados corretamente
+    updateCarousel();
+    updatePosts();
+    initializePage();
+});
+</script>
+</body>
+</html>
